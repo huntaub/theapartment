@@ -1,0 +1,119 @@
+<h1>Welcome, {{ resolveName(loginObj.user.uid) }}</h1>
+
+<h3>This Week's Meals <small><a href="#/meals">edit</a></small></h3>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Meal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sunday</td>
+      <td>{{ meals.sunday.name }}</td>
+    </tr>
+    <tr>
+      <td>Monday</td>
+      <td>{{ meals.monday.name }}</td>
+    </tr>
+    <tr>
+      <td>Tuesday</td>
+      <td>{{ meals.tuesday.name }}</td>
+    </tr>
+    <tr>
+      <td>Wednesday</td>
+      <td>{{ meals.wednesday.name }}</td>
+    </tr>
+    <tr>
+      <td>Thursday</td>
+      <td>{{ meals.thursday.name }}</td>
+    </tr>
+    <tr>
+      <td>Friday</td>
+      <td>{{ meals.friday.name }}</td>
+    </tr>
+    <tr>
+      <td>Saturday</td>
+      <td>{{ meals.saturday.name }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Grocery List <small><a href="" ng-click="groceries.$remove();">remove all</a></small></h3>
+
+<form role="form" ng-submit="addGrocery()">
+  <div class="input-group">
+    <input type="text" class="form-control" ng-model="newGrocery">
+    <span class="input-group-btn">
+      <button class="btn btn-primary" type="submit">Add</button>
+    </span>
+  </div>
+</form>
+
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="(id, item) in groceries">
+    <span class="pull-right">
+      <a href="" ng-click="groceries.$remove(id);">x</a>
+    </span>
+    {{ item.name }}
+  </li>
+</ul>
+
+<h3>Receipts</h3>
+
+<p>
+  <a href="#/receipts">Add Receipt</a>
+</p>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Payer</th>
+      <th>Your Cost</th>
+      <th>Total Cost</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="(id, receipt) in receipts">
+      <td>{{ receipt.name }}</td>
+      <td>{{ resolveName(receipt.payer) }}</td>
+      <td>{{ yourCost(id, receipt) }}</td>
+      <td>{{ totalCost(id, receipt) }}</td>
+      <td><a href="" ng-click="receipts.$remove(id)">x</a></td>
+    </tr>
+    <tr>
+      <td><strong>Totals</stong></td>
+      <td></td>
+      <td><strong>{{ totals(0) }}</strong></td>
+      <td>{{ totals(1) }}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Who Do I Owe?</h3>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <tr ng-repeat="(id, user) in fb.users">
+        <td>{{ user.name }}</td>
+        <td>{{ calculateOwed(id) }}</td>
+      </tr>
+      <tr>
+        <td><strong>Total</strong></td>
+        <td><strong>{{ totalOwed() }}</strong></td>
+      </tr>
+    </tr>
+  </tbody>
+</table>

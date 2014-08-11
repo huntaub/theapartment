@@ -1,0 +1,53 @@
+<h1>Create a New Receipt</h1>
+<form role="form" ng-submit="save()">
+
+  <div class="form-group">
+    <label for="name">Receipt Name</label>
+    <input type="text" id="name" ng-model="name" class="form-control">
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label for="payer">Payer</label>
+        <br/>
+        <div class="btn-group">
+          <a href="" class="btn btn-primary" ng-repeat="(id, user) in users" ng-class="{'active' : $parent.payer == id }" ng-click="$parent.payer = id">{{ user.name }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="taxed"> Taxed
+        </label>
+      </div>
+    </div>
+  </div>
+
+
+  <p><a href="" ng-click="addItem()">Add Item</a></p>
+
+  <div ng-repeat="item in items" style="margin-bottom: 5px;">
+    <div class="row">
+      <div class="col-xs-6">
+        <input type="number" step="0.01" placeholder="Cost" class="form-control" ng-model="item.cost">
+      </div>
+      <div class="col-xs-6">
+        <div class="btn-group">
+          <a href="" class="btn btn-primary" ng-repeat="(id, user) in users" ng-class="{'active': item.users[id] == true }" ng-click="item.users[id] = (item.users[id] ? false : true)">{{ user.name }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+
+  <div ng-show="taxed">
+    <p>Sub-Total: ${{ subtotal() }}</p>
+    <p>Tax: ${{ tax() }}</p>
+  </div>
+  <p><strong>Total Cost: ${{ totalCost() }}</strong></p>
+
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>

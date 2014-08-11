@@ -1,0 +1,15 @@
+<h1>Login to The Apartment</h1>
+<form role="form" ng-submit="login()">
+  <div class="alert alert-danger" ng-show="error !== undefined">
+    Error Logging In. Please try again.
+  </div>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="username" ng-model="username">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" ng-model="password">
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>

@@ -1,0 +1,22 @@
+<html lang="en" ng-app="theApartment">
+  <head>
+    <title>The Apartment Manager</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/lumen/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body ng-controller="ApplicationCtrl">
+    <div ng-include="'partials/navbar.html'"></div>
+    <div class="container" style="padding-top: 50px;">
+      <div ng-view></div>
+    </div>
+    <!-- Angular Information -->
+    <script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.min.js'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular-route.min.js'></script>
+    <!-- Firebase -->
+    <script src='//cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+    <script src="//cdn.firebase.com/js/simple-login/1.6.2/firebase-simple-login.js"></script>
+    <script src='//cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js'></script>
+    <!-- Application -->
+    <script src='/app.js'></script>
+    <script src='/controllers.js'></script>
+  </body>
+</html>
