@@ -25,6 +25,10 @@ theApartment.config(['$routeProvider',
         templateUrl: 'partials/receipts.html',
         controller: 'ReceiptsCtrl',
       })
+      .when('/movies', {
+        templateUrl: 'partials/movies.html',
+        controller: 'MoviesCtrl'
+      })
       .otherwise({
         redirectTo:'/login',
       })

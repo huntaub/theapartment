@@ -8,6 +8,7 @@ theApartmentControllers.controller('ApplicationCtrl', ['$scope', '$firebaseSimpl
       $location.path("/login");
     });
 }]);
+
 theApartmentControllers.controller('LoginCtrl', ['$scope', '$firebaseSimpleLogin', '$location',
   function($scope, $firebaseSimpleLogin, $location) {
     $scope.loginObj = $firebaseSimpleLogin(theApartmentFirebase);
@@ -29,6 +30,12 @@ theApartmentControllers.controller('LoginCtrl', ['$scope', '$firebaseSimpleLogin
       });
     }
 }]);
+
+theApartmentControllers.controller('MoviesCtrl', ['$scope', '$firebaseSimpleLogin',
+  function($scope, $firebaseSimpleLogin) {
+
+}]);
+
 theApartmentControllers.controller('DashboardCtrl', ['$scope', '$firebaseSimpleLogin', '$firebase',
   function($scope, $firebaseSimpleLogin, $firebase) {
     $scope.loginObj = $firebaseSimpleLogin(theApartmentFirebase);
